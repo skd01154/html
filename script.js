@@ -1,70 +1,66 @@
-const arr = Array(1).fill('sss')
-            .concat(Array(2).fill('ss'))
-            .concat(Array(6).fill('s'))
-            .concat(Array(10).fill('a'))
-            .concat(Array(18).fill('b'))
-            .concat(Array(12).fill('c'));
+const board = document.getElementById('board');
+const numbers = [];
 
-function shuffleArray(arr) {
-  let prev = '';
-  for (let i = arr.length - 1; i > 0; i--) {
-    if (arr[i] === 'c' && prev === 'c') {
-      [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
-    } else {
-      let j = Math.floor(Math.random() * (i + 1));
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-      prev = arr[i];
-    }
-  }
+for (let i = 1; i <= 49; i++) {
+  const number = document.createElement('div');
+  number.classList.add('number');
+  number.setAttribute('id', i);
+  number.textContent = i;
+  board.appendChild(number);
+  numbers.push(number);
 }
 
-// Shuffle the array
-shuffleArray(arr);
+const sssButton = document.createElement('button');
+sssButton.textContent = 'sss';
+document.body.appendChild(sssButton);
 
-const container = document.querySelector('.container');
+let selectedNumber = null;
 
-// Fill the cells with the corresponding element in the array
-for (let i = 0; i < 7; i++) {
-  for (let j = 0; j < 7; j++) {
-    const cell = document.createElement('div');
-    cell.classList.add('cell');
-    cell.dataset.value = arr[i * 7 + j];
-    cell.textContent = i * 7 + j + 1;
-    container.appendChild(cell);
+function handleNumberClick(event) {
+  if (selectedNumber) {
+    selectedNumber.classList.remove('selected');
   }
+  selectedNumber = event.currentTarget;
+  selectedNumber.classList.add('selected');
 }
 
-// Add event listener to the cells
-const cells = document.querySelectorAll('.cell');
-let selected = null;
-cells.forEach(cell => {
-  cell.addEventListener('mouseenter', () => {
-    if (!cell.classList.contains('selected')) {
-      cell.style.backgroundColor = 'gray';
-    }
-  });
-  cell.addEventListener('mouseleave', () => {
-    if (!cell.classList.contains('selected')) {
-      cell.style.backgroundColor = '';
-    }
-  });
-  cell.addEventListener('click', () => {
-    if (cell.dataset.value === 'sss') {
-      shuffleArray(arr);
-      cells.forEach(cell => {
-        cell.dataset.value = arr[parseInt(cell.textContent) - 1];
-        cell.classList.remove('selected');
-        cell.style.backgroundColor = '';
-      });
-    } else {
-      cell.classList.toggle('selected');
-      if (cell.classList.contains('selected')) {
-        cell.style.backgroundColor = 'yellow';
-        selected = cell;
-      } else {
-        cell.style.backgroundColor = '';
-        selected = null;
+function handleSssButtonClick() {
+  selectedNumber = null;
+  for (let i = 0; i < numbers.length; i++) {
+    const prevNumber = numbers[i - 1];
+    const currentNumber = numbers[i];
+    const nextNumber = numbers[i + 1];
+    if (
+      currentNumber.classList.contains('c') &&
+      (!prevNumber || !prevNumber.classList.contains('c')) &&
+      (!nextNumber || !nextNumber.classList.contains('c'))
+    ) {
+      currentNumber.classList.remove('c');
+      const randomNumber = Math.floor(Math.random() * 6);
+      switch (randomNumber) {
+        case 0:
+          currentNumber.classList.add('sss');
+          break;
+        case 1:
+          currentNumber.classList.add('ss');
+          break;
+        case 2:
+        case 3:
+        case 4:
+          currentNumber.classList.add('s');
+          break;
+        case 5:
+          currentNumber.classList.add('a');
+          break;
       }
     }
-  });
-});
+  }
+  result.textContent = '';
+}
+
+const result = document.createElement('div');
+result.setAttribute('id', 'result');
+document.body.appendChild(result);
+
+board.addEventListener('click', handleNumberClick);
+sssButton.addEventListener('click', handleSssButtonClick);

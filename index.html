@@ -1,87 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Number Grid</title>
-  <style>
-    .cell {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50px;
-      height: 50px;
-      border: 1px solid black;
-      cursor: pointer;
-    }
-    .selected {
-      background-color: lightgray;
-    }
-  </style>
-</head>
-<body>
-  <div id="grid"></div>
-  <script>
-    // Create 7x7 grid
-    const grid = document.getElementById('grid');
-    for (let i = 0; i < 7; i++) {
-      const row = document.createElement('div');
-      row.classList.add('row');
-      for (let j = 0; j < 7; j++) {
-        const cell = document.createElement('div');
-        cell.classList.add('cell');
-        row.appendChild(cell);
-      }
-      grid.appendChild(row);
-    }
-
-    // Assign numbers to cells
-    const arr = Array(1).fill('sss')
-      .concat(Array(2).fill('ss'))
-      .concat(Array(6).fill('s'))
-      .concat(Array(10).fill('a'))
-      .concat(Array(18).fill('b'))
-      .concat(Array(12).fill('c'));
-
-    function shuffleArray(arr) {
-      let prev = '';
-      for (let i = arr.length - 1; i > 0; i--) {
-        if (arr[i] === 'c' && prev === 'c') {
-          [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
-        } else {
-          let j = Math.floor(Math.random() * (i + 1));
-          [arr[i], arr[j]] = [arr[j], arr[i]];
-          prev = arr[i];
-        }
-      }
-    }
-
-    shuffleArray(arr);
-
-    const cells = document.querySelectorAll('.cell');
-    for (let i = 0; i < cells.length; i++) {
-      const cell = cells[i];
-      const number = document.createElement('span');
-      number.innerHTML = arr[i];
-      cell.appendChild(number);
-      cell.addEventListener('mouseenter', () => {
-        cell.classList.add('selected');
-      });
-      cell.addEventListener('mouseleave', () => {
-        cell.classList.remove('selected');
-      });
-      cell.addEventListener('click', () => {
-        console.log(arr[i]);
-      });
-    }
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 's') {
-        shuffleArray(arr);
-        for (let i = 0; i < cells.length; i++) {
-          const number = cells[i].querySelector('span');
-          number.innerHTML = arr[i];
-        }
-      }
-    });
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Number Board</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="board"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
