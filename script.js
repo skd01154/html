@@ -1,5 +1,10 @@
 // Create an array of characters
-const arr = ['sss', 'ss', 's', 'a', 'b', 'c'];
+const arr = Array(1).fill('sss')
+            .concat(Array(2).fill('ss'))
+            .concat(Array(6).fill('s'))
+            .concat(Array(10).fill('a'))
+            .concat(Array(18).fill('b'))
+            .concat(Array(12).fill('c'));
 
 // Randomly shuffle the array without two consecutive 'c'
 function shuffleArray(arr) {
