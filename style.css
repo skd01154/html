@@ -1,46 +1,34 @@
-.container {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.numArray-container,
 .numArrayCopy-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
-.numArray-item,
 .numArrayCopy-item {
   width: 50px;
   height: 50px;
-  margin: 5px;
-  background-color: #eee;
-  border: 2px solid #ddd;
+  border: 1px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .numArrayCopy-item:hover {
-  background-color: #ddd;
+  background-color: #e6e6e6;
 }
 
 .numArrayCopy-item.selected {
-  background-color: #009688;
-  color: #fff;
+  background-color: #ffcc00;
 }
 
-.numArrayCopy-item.selected:hover {
-  background-color: #00796b;
-}
-
-.numArray-item.selected {
-  background-color: #ff5722;
-  color: #fff;
+.numArray-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  font-size: 20px;
 }

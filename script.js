@@ -65,6 +65,27 @@ for (let i = 0; i < numDivs.length; i++) {
   });
 }
 
+let selectedNum = null;
+
+function selectNum(numDiv) {
+  const row = numDiv.getAttribute("data-row");
+  const col = numDiv.getAttribute("data-col");
+  selectedNum = numArray[row][col];
+  printArray(numArray, "numArray-container");
+}
+
+for (let i = 0; i < numDivs.length; i++) {
+  numDivs[i].addEventListener("mouseenter", function() {
+    this.innerText = "선택";
+  });
+  numDivs[i].addEventListener("mouseleave", function() {
+    this.innerText = numArrayCopy[Math.floor(i / 7)][i % 7];
+  });
+  numDivs[i].addEventListener("click", function() {
+    selectNum(this);
+  });
+}
+
 function printArray(array, containerId) {
   const container = document.getElementById(containerId);
   container.innerHTML = "";
@@ -74,17 +95,11 @@ function printArray(array, containerId) {
     for (let item of row) {
       const numDiv = document.createElement("div");
       numDiv.innerText = item;
+      if (item === selectedNum) {
+        numDiv.classList.add("selected");
+      }
       rowDiv.appendChild(numDiv);
     }
     container.appendChild(rowDiv);
   }
-}
-
-function copyClickHandler(event) {
-  // 클릭한 td 요소의 인덱스를 가져옴
-  const index = parseInt(event.target.dataset.index);
-  // numArrayCopy의 해당 인덱스 원소 값을 numArray의 해당 인덱스 원소 값으로 바꿈
-  numArray[index] = numArrayCopy[index];
-  // numArray를 이용해 표를 다시 그림
-  renderTable(numArray);
 }
