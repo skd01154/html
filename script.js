@@ -24,7 +24,7 @@ const arr = sss.concat(ss, s, a, b, c);
 function shuffleArray(arr) {
   let prev = '';
   for (let i = arr.length - 1; i > 0; i--) {
-    if (arr[i] === 'c' || prev === 'c') {
+    if (arr[i] === 'c' && prev === 'c') {
       [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
     } else {
       let j = Math.floor(Math.random() * (i + 1));
@@ -32,7 +32,6 @@ function shuffleArray(arr) {
       prev = arr[i];
     }
   }
-  // 배열을 직접 수정하도록 수정
   return arr;
 }
 
@@ -77,7 +76,7 @@ function replaceCell() {
   const row = parseInt(this.dataset.row);
   const col = parseInt(this.dataset.col);
   const value = numArray[row][col];
-  const shuffledValue = matrix[row][col];
+  const shuffledValue = shuffleArray(matrix.flat())[row * 7 + col];
 
   if (value === shuffledValue) {
     return;
