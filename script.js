@@ -24,7 +24,7 @@ const arr = sss.concat(ss, s, a, b, c);
 function shuffleArray(arr) {
   let prev = '';
   for (let i = arr.length - 1; i > 0; i--) {
-    if (arr[i] === 'c' && prev === 'c') {
+    if (arr[i] === 'c' || prev === 'c') {
       [arr[i], arr[i - 1]] = [arr[i - 1], arr[i]];
     } else {
       let j = Math.floor(Math.random() * (i + 1));
