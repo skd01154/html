@@ -80,16 +80,11 @@ function printArray(array, containerId) {
   }
 }
 
-// numArrayCopy-container의 클릭 이벤트 핸들러
-function handleClick(e) {
-  // 클릭한 요소가 숫자판 내부의 숫자 요소인 경우
-  if (e.target.classList.contains('numArrayCopy-item')) {
-    // 클릭한 요소의 인덱스를 가져옴
-    const row = parseInt(e.target.getAttribute('data-row'));
-    const col = parseInt(e.target.getAttribute('data-col'));
-    // numArrayCopy의 해당 위치의 값을 numArray의 해당 위치로 복사
-    numArray[row][col] = numArrayCopy[row][col];
-    // numArray 출력
-    printArray(numArray, 'numArray-container');
-  }
+function copyClickHandler(event) {
+  // 클릭한 td 요소의 인덱스를 가져옴
+  const index = parseInt(event.target.dataset.index);
+  // numArrayCopy의 해당 인덱스 원소 값을 numArray의 해당 인덱스 원소 값으로 바꿈
+  numArray[index] = numArrayCopy[index];
+  // numArray를 이용해 표를 다시 그림
+  renderTable(numArray);
 }
