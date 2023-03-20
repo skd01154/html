@@ -1,40 +1,46 @@
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: center;
 }
 
+.numArray-container,
+.numArrayCopy-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.numArray-item,
 .numArrayCopy-item {
-  width: 40px;
-  height: 40px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  background-color: #eee;
+  border: 2px solid #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 24px;
+  font-weight: bold;
   cursor: pointer;
 }
 
 .numArrayCopy-item:hover {
-  background-color: #ccc;
+  background-color: #ddd;
 }
 
-#numArray-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.numArrayCopy-item.selected {
+  background-color: #009688;
+  color: #fff;
 }
 
-#numArray-container div {
-  width: 40px;
-  height: 40px;
-  background-color: #f2f2f2;
-  border: 1px solid #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
+.numArrayCopy-item.selected:hover {
+  background-color: #00796b;
+}
+
+.numArray-item.selected {
+  background-color: #ff5722;
+  color: #fff;
 }
