@@ -34,3 +34,14 @@
   text-align: center;
   overflow: hidden;
 }
+
+.numArrayCopy-container div {
+  width: calc(100% / 7);
+  height: calc(100% / 7);
+  box-sizing: border-box;
+  border: 1px solid #333;
+}
+
+.numArrayCopy-container div.selected {
+  background-color: yellow;
+}
