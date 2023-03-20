@@ -5,20 +5,36 @@
   height: 100vh;
 }
 
-.num {
+.numArrayCopy-item {
+  width: 40px;
+  height: 40px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
-  border: 1px solid #333;
-  margin: 5px;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.num:hover {
-  background-color: #333;
-  color: #fff;
+.numArrayCopy-item:hover {
+  background-color: #ccc;
+}
+
+#numArray-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#numArray-container div {
+  width: 40px;
+  height: 40px;
+  background-color: #f2f2f2;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
 }

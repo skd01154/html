@@ -7,7 +7,6 @@ for (let i = 0; i < 7; i++) {
   numArrayCopy.push(row);
 }
 
-
 const sss = Array(1).fill('sss');
 const ss = Array(2).fill('ss');
 const s = Array(6).fill('s');
@@ -29,6 +28,7 @@ function shuffleArray(arr) {
     }
   }
 }
+
 shuffleArray(arr);
 
 function createArray(arr) {
@@ -40,20 +40,22 @@ function createArray(arr) {
   return result;
 }
 
-const numArray = createArray(shuffleArray(arr));
+const numArray = createArray(arr);
 
 const numArrayCopyContainer = document.getElementById("numArrayCopy-container");
 numArrayCopyContainer.innerHTML = "";
 for (let i = 0; i < numArrayCopy.length; i++) {
   for (let j = 0; j < numArrayCopy[i].length; j++) {
     const numDiv = document.createElement("div");
-    numDiv.classList.add("num");
+    numDiv.classList.add("numArrayCopy-item");
+    numDiv.setAttribute("data-row", i);
+    numDiv.setAttribute("data-col", j);
     numDiv.innerText = numArrayCopy[i][j];
     numArrayCopyContainer.appendChild(numDiv);
   }
 }
 
-const numDivs = document.querySelectorAll(".num");
+const numDivs = document.querySelectorAll(".numArrayCopy-item");
 for (let i = 0; i < numDivs.length; i++) {
   numDivs[i].addEventListener("mouseenter", function() {
     this.innerText = "선택";
