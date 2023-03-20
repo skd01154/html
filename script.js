@@ -32,7 +32,6 @@ function shuffleArray(arr) {
       prev = arr[i];
     }
   }
-  return arr;
 }
 
 shuffleArray(arr);
