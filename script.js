@@ -65,6 +65,20 @@ for (let i = 0; i < numDivs.length; i++) {
   });
 }
 
+function printArray(array, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  for (let row of array) {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("numArray-item");
+    for (let item of row) {
+      const numDiv = document.createElement("div");
+      numDiv.innerText = item;
+      rowDiv.appendChild(numDiv);
+    }
+    container.appendChild(rowDiv);
+  }
+}
 
 // numArrayCopy-container의 클릭 이벤트 핸들러
 function handleClick(e) {
