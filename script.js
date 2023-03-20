@@ -12,6 +12,8 @@ for (let i = 0; i < 7; i++) {
   numArray.push(row);
 }
 
+
+
 const sss = Array(1).fill('sss');
 const ss = Array(2).fill('ss');
 const s = Array(6).fill('s');
@@ -30,7 +32,10 @@ function shuffleArray(arr) {
       }
       [arr[i], arr[j]] = [arr[j], arr[i]];
     } else {
-      let j = Math.floor(Math.random() * (i + 1));
+      let j;
+      do {
+        j = Math.floor(Math.random() * (i + 1));
+      } while (j > 0 && j < i && arr[j] === 'c');
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
   }
@@ -78,4 +83,45 @@ function replaceCell() {
 
   numArray[row][col] = shuffledValue;
   this.innerText = shuffledValue;
+}
+
+let arr1 = ["sss", "ss", "ss", "s", "s", "s", "s", "s", "s", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c"];
+
+let arr2 = [];
+
+for (let i = 0; i < arr.length; i++) {
+  let row = [];
+  let cCount = 0;
+  for (let j = 0; j < arr[i].length; j++) {
+    let value = "";
+    if (arr1[i * arr[i].length + j] === "c") {
+      cCount++;
+      if (j > 0 && arr2[i][j-1] === "c") {
+        continue;
+      } else {
+        switch(cCount) {
+          case 1:
+            value = "a";
+            break;
+          case 2:
+            value = "s";
+            break;
+          case 3:
+            value = "ss";
+            break;
+          case 4:
+            value = "sss";
+            break;
+          default:
+            value = "b";
+            break;
+        }
+      }
+    } else {
+      value = arr1[i * arr[i].length + j];
+      cCount = 0;
+    }
+    row.push(value);
+  }
+  arr2.push(row);
 }
