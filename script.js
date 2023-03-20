@@ -39,12 +39,6 @@ function shuffleArray(arr) {
 
 shuffleArray(arr);
 
-// 1차원 배열을 7x7 이차원 배열로 변환
-const matrix = [];
-for (let i = 0; i < arr.length; i += 7) {
-  matrix.push(arr.slice(i, i + 7));
-}
-
 const table = document.createElement('table');
 
 for (let i = 0; i < 7; i++) {
@@ -72,13 +66,11 @@ for (let i = 0; i < 7; i++) {
 
 document.body.appendChild(table);
 
-
-
 function replaceCell() {
   const row = parseInt(this.dataset.row);
   const col = parseInt(this.dataset.col);
   const value = numArray[row][col];
-  const shuffledValue = shuffleArray(matrix.flat())[row * 7 + col];
+  const shuffledValue = shuffleArray(arr)[row * 7 + col];
 
   if (value === shuffledValue) {
     return;
