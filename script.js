@@ -63,22 +63,6 @@ for (let i = 0; i < numDivs.length; i++) {
   });
 }
 
-function handleClick(event) {
-  // 클릭한 숫자 판의 위치 구하기
-  const clickedRowIndex = parseInt(event.target.dataset.row);
-  const clickedColIndex = parseInt(event.target.dataset.col);
-  
-  // numArray와 numArrayCopy에서 해당 위치의 값을 서로 바꾸기
-  const temp = numArray[clickedRowIndex][clickedColIndex];
-  numArray[clickedRowIndex][clickedColIndex] = numArrayCopy[clickedRowIndex][clickedColIndex];
-  numArrayCopy[clickedRowIndex][clickedColIndex] = temp;
-  
-  // numArray 출력하기
-  displayArray(numArray, "numArray-container");
-  
-  // numArrayCopy 출력하기
-  displayArray(numArrayCopy, "numArrayCopy-container");
-}
 
 // numArrayCopy-container의 클릭 이벤트 핸들러
 function handleClick(e) {

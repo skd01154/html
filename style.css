@@ -1,47 +1,24 @@
-.numArray-container {
+.container {
   display: flex;
-  flex-wrap: wrap;
-  width: 500px;
-  height: 500px;
-  margin: 0 auto;
-  border: 1px solid #333;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.numArray-container div {
-  width: calc(100% / 7);
-  height: calc(100% / 7);
-  box-sizing: border-box;
-  border: 1px solid #333;
-}
-
-.numArray-container div.selected {
-  background-color: yellow;
-}
-
-.numArrayCopy-container {
+.num {
   display: flex;
-  flex-wrap: wrap;
-  width: 500px;
-  height: 500px;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
   border: 1px solid #333;
-  font-size: 20px;
+  margin: 5px;
+  font-size: 24px;
   font-weight: bold;
-  text-align: center;
-  overflow: hidden;
+  cursor: pointer;
 }
 
-.numArrayCopy-container div {
-  width: calc(100% / 7);
-  height: calc(100% / 7);
-  box-sizing: border-box;
-  border: 1px solid #333;
-}
-
-.numArrayCopy-container div.selected {
-  background-color: yellow;
+.num:hover {
+  background-color: #333;
+  color: #fff;
 }
