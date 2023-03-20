@@ -1,63 +1,76 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.numArray-container,
 .numArrayCopy-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  grid-gap: 10px;
   margin-bottom: 20px;
 }
 
-.numArray-item,
 .numArrayCopy-item {
-  width: 60px;
-  height: 60px;
-  margin: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  font-weight: bold;
-  color: #444;
+  background-color: #ccc;
   border-radius: 5px;
-  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
   cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
+  transition: all 0.2s ease;
 }
 
 .numArrayCopy-item:hover {
-  background-color: #ddd;
-}
-
-.numArrayCopy-item:active {
-  background-color: #aaa;
-}
-
-.selected {
-  background-color: #4CAF50;
+  background-color: #999;
   color: #fff;
 }
 
-@media only screen and (max-width: 600px) {
-  .numArray-item,
-  .numArrayCopy-item {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
+.numArrayCopy-item.selected {
+  background-color: #333;
+  color: #fff;
+}
+
+.numArrayCopy-item.selected:hover {
+  background-color: #999;
+}
+
+.numArray-row {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.numArray-item {
+  background-color: #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  flex-grow: 1;
+}
+
+.numArray-item.highlighted {
+  background-color: #999;
+  color: #fff;
+}
+
+.numArray-item.selected {
+  background-color: #333;
+  color: #fff;
+}
+
+.numArray-item.selected:hover {
+  background-color: #999;
+}
+
+@media (max-width: 768px) {
+  .numArrayCopy-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+  }
+
+  .numArray-item {
+    font-size: 1.2rem;
   }
 }
