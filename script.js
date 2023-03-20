@@ -32,6 +32,8 @@ function shuffleArray(arr) {
       prev = arr[i];
     }
   }
+  // 배열을 직접 수정하도록 수정
+  return arr;
 }
 
 shuffleArray(arr);
@@ -75,12 +77,14 @@ function replaceCell() {
   const row = parseInt(this.dataset.row);
   const col = parseInt(this.dataset.col);
   const value = numArray[row][col];
-  const shuffledValue = shuffleArray[row][col];
+  // shuffleArray 함수가 직접 배열을 수정하도록 수정했으므로,
+  // shuffledValue 변수가 아닌 직접 numArray를 수정합니다.
+  shuffleArray(numArray[row]);
+  const shuffledValue = numArray[row][col];
 
   if (value === shuffledValue) {
     return;
   }
 
-  numArray[row][col] = shuffledValue;
   this.innerText = shuffledValue;
 }
