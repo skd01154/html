@@ -55,14 +55,20 @@ for (let i = 0; i < numArrayCopy.length; i++) {
   }
 }
 
-const numDivs = document.querySelectorAll(".numArrayCopy-item");
-for (let i = 0; i < numDivs.length; i++) {
-  numDivs[i].addEventListener("mouseenter", function() {
-    this.innerText = "선택";
-  });
-  numDivs[i].addEventListener("mouseleave", function() {
-    this.innerText = numArrayCopy[Math.floor(i / 7)][i % 7];
-  });
+function printArray(array, containerId) {
+  const container = document.getElementById(containerId);
+  container.innerHTML = "";
+  for (let row of array) {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("numArray-row");
+    for (let item of row) {
+      const numDiv = document.createElement("div");
+      numDiv.classList.add("numArray-item");
+      numDiv.innerText = item;
+      rowDiv.appendChild(numDiv);
+    }
+    container.appendChild(rowDiv);
+  }
 }
 
 let selectedNum = null;
@@ -74,6 +80,18 @@ function selectNum(numDiv) {
   printArray(numArray, "numArray-container");
 }
 
+const numDivs = document.querySelectorAll(".numArrayCopy-item");
+for (let i = 0; i < numDivs.length; i++) {
+  numDivs[i].addEventListener("mouseenter", function() {
+    this.innerText = "선택";
+  });
+  numDivs[i].addEventListener("mouseleave", function() {
+    this.innerText = numArrayCopy[Math.floor(i / 7)][i % 7];
+  });
+}
+
+
+
 for (let i = 0; i < numDivs.length; i++) {
   numDivs[i].addEventListener("mouseenter", function() {
     this.innerText = "선택";
@@ -84,22 +102,12 @@ for (let i = 0; i < numDivs.length; i++) {
   numDivs[i].addEventListener("click", function() {
     selectNum(this);
   });
-}
-
-function printArray(array, containerId) {
-  const container = document.getElementById(containerId);
-  container.innerHTML = "";
-  for (let row of array) {
-    const rowDiv = document.createElement("div");
-    rowDiv.classList.add("numArray-item");
-    for (let item of row) {
-      const numDiv = document.createElement("div");
-      numDiv.innerText = item;
-      if (item === selectedNum) {
-        numDiv.classList.add("selected");
-      }
-      rowDiv.appendChild(numDiv);
+  numDivs[i].addEventListener("click", function() {
+    if (this.innerText === "선택") {
+      const row = this.getAttribute("data-row");
+      const col = this.getAttribute("data-col");
+      selectedNum = numArrayCopy[row][col];
+      printArray(numArray, "numArray-container");
     }
-    container.appendChild(rowDiv);
-  }
+  });
 }
