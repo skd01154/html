@@ -1,76 +1,34 @@
-.numArrayCopy-container {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-gap: 10px;
-  margin-bottom: 20px;
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
 }
 
-.numArrayCopy-item {
-  background-color: #ccc;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
+td {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  font-size: 20px;
   font-weight: bold;
-  color: #333;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  position: relative;
 }
 
-.numArrayCopy-item:hover {
-  background-color: #999;
+.number-cell:hover::before {
+  content: '선택';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
   color: #fff;
-}
-
-.numArrayCopy-item.selected {
-  background-color: #333;
-  color: #fff;
-}
-
-.numArrayCopy-item.selected:hover {
-  background-color: #999;
-}
-
-.numArray-row {
   display: flex;
-  margin-bottom: 5px;
-}
-
-.numArray-item {
-  background-color: #ccc;
-  border-radius: 5px;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #333;
-  flex-grow: 1;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.numArray-item.highlighted {
-  background-color: #999;
-  color: #fff;
-}
-
-.numArray-item.selected {
-  background-color: #333;
-  color: #fff;
-}
-
-.numArray-item.selected:hover {
-  background-color: #999;
-}
-
-@media (max-width: 768px) {
-  .numArrayCopy-container {
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-  }
-
-  .numArray-item {
-    font-size: 1.2rem;
-  }
+.number-cell {
+  position: relative;
 }

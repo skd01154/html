@@ -1,10 +1,15 @@
-let numArrayCopy = [];
+const numArray = [];
+let count = 1;
+
 for (let i = 0; i < 7; i++) {
-  let row = [];
+  const row = [];
+
   for (let j = 0; j < 7; j++) {
-    row.push((6 - j) * 7 + i + 1);
+    row.push(count);
+    count++;
   }
-  numArrayCopy.push(row);
+
+  numArray.push(row);
 }
 
 const sss = Array(1).fill('sss');
@@ -31,64 +36,51 @@ function shuffleArray(arr) {
 
 shuffleArray(arr);
 
-function createArray(arr) {
-  const result = [];
-  for (let i = 0; i < 7; i++) {
-    const row = arr.slice(i * 7, i * 7 + 7).reverse();
-    result.push(row);
+// 1차원 배열을 7x7 이차원 배열로 변환
+const matrix = [];
+for (let i = 0; i < arr.length; i += 7) {
+  matrix.push(arr.slice(i, i + 7));
+}
+
+const table = document.createElement('table');
+
+for (let i = 0; i < 7; i++) {
+  const row = document.createElement('tr');
+  for (let j = 0; j < 7; j++) {
+    const cell = document.createElement('td');
+    const number = document.createTextNode(numArray[i][j]);
+    const div = document.createElement('div');
+    div.appendChild(number);
+    div.classList.add('number-cell');
+    div.dataset.row = i;
+    div.dataset.col = j;
+    div.addEventListener('click', replaceCell);
+    div.addEventListener('mouseover', function() {
+      this.innerText = '선택';
+    });
+    div.addEventListener('mouseout', function() {
+      this.innerText = numArray[i][j];
+    });
+    cell.appendChild(div);
+    row.appendChild(cell);
   }
-  return result;
+  table.appendChild(row);
 }
 
-const numArray = createArray(arr);
+document.body.appendChild(table);
 
-const numArrayCopyContainer = document.getElementById("numArrayCopy-container");
-numArrayCopyContainer.innerHTML = "";
-for (let i = 0; i < numArrayCopy.length; i++) {
-  for (let j = 0; j < numArrayCopy[i].length; j++) {
-    const numDiv = document.createElement("div");
-    numDiv.classList.add("numArrayCopy-item");
-    numDiv.setAttribute("data-row", i);
-    numDiv.setAttribute("data-col", j);
-    numDiv.innerText = numArrayCopy[i][j];
-    numArrayCopyContainer.appendChild(numDiv);
+
+
+function replaceCell() {
+  const row = parseInt(this.dataset.row);
+  const col = parseInt(this.dataset.col);
+  const value = numArray[row][col];
+  const shuffledValue = shuffleArray[row][col];
+
+  if (value === shuffledValue) {
+    return;
   }
-}
 
-
-function printArray(array, containerId) {
-  const container = document.getElementById(containerId);
-  for (let row of array) {
-    const rowDiv = document.createElement("div");
-    rowDiv.classList.add("numArray-row");
-    for (let item of row) {
-      const numDiv = document.createElement("div");
-      numDiv.classList.add("numArray-item");
-      numDiv.innerText = item;
-      rowDiv.appendChild(numDiv);
-      container.appendChild(rowDiv);
-    }
-  }
-}
-
-let selectedNum = null;
-
-function selectNum(numDiv) {
-  const row = numDiv.getAttribute("data-row");
-  const col = numDiv.getAttribute("data-col");
-  selectedNum = numArray[row][col];
-  printArray([[selectedNum]], "selectedNum-container");
-}
-
-const numDivs = document.querySelectorAll(".numArrayCopy-item");
-for (let i = 0; i < numDivs.length; i++) {
-  numDivs[i].addEventListener("mouseenter", function() {
-    this.innerText = "선택";
-  });
-  numDivs[i].addEventListener("mouseleave", function() {
-    this.innerText = numArrayCopy[Math.floor(i / 7)][i % 7];
-  });
-  numDivs[i].addEventListener("click", function() {
-    selectNum(this);
-  });
+  numArray[row][col] = shuffledValue;
+  this.innerText = shuffledValue;
 }
