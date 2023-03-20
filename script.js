@@ -1,20 +1,21 @@
-let numArray = [];
-let num = 1;
+let numArrayCopy = [];
 for (let i = 0; i < 7; i++) {
   let row = [];
   for (let j = 0; j < 7; j++) {
-    row.push(num);
-    num++;
+    row.push(i * 7 + j + 1);
   }
-  numArray.push(row);
+  numArrayCopy.push(row);
 }
 
-const arr = Array(1).fill('sss')
-  .concat(Array(2).fill('ss'))
-  .concat(Array(6).fill('s'))
-  .concat(Array(10).fill('a'))
-  .concat(Array(18).fill('b'))
-  .concat(Array(12).fill('c'));
+
+const sss = Array(1).fill('sss');
+const ss = Array(2).fill('ss');
+const s = Array(6).fill('s');
+const a = Array(10).fill('a');
+const b = Array(18).fill('b');
+const c = Array(12).fill('c');
+
+const arr = sss.concat(ss, s, a, b, c);
 
 function shuffleArray(arr) {
   let prev = '';
@@ -30,43 +31,65 @@ function shuffleArray(arr) {
 }
 shuffleArray(arr);
 
-const obj = {
-  'sss': [],
-  'ss': [],
-  's': [],
-  'a': [],
-  'b': [],
-  'c': []
-};
-let index = 0;
-for (const prop in obj) {
-  const len = arr.filter(elem => elem === prop).length;
-  obj[prop] = numArray.slice(index, index + len).flat();
-  index += len;
+function createArray(arr) {
+  const result = [];
+  for (let i = 0; i < 7; i++) {
+    const row = arr.slice(i * 7, i * 7 + 7);
+    result.push(row);
+  }
+  return result;
 }
 
-const boardDiv = document.getElementById('board');
-for (let i = 0; i < 7; i++) {
-  for (let j = 0; j < 7; j++) {
-    const cellDiv = document.createElement('div');
-    cellDiv.classList.add('cell');
-    const numSpan = document.createElement('span');
-    numSpan.innerText = numArray[i][j];
-    cellDiv.appendChild(numSpan);
-    const hiddenSpan = document.createElement('span');
-    hiddenSpan.innerText = obj[arr[numArray[i][j] - 1]];
-    hiddenSpan.classList.add('hidden');
-    cellDiv.appendChild(hiddenSpan);
-    cellDiv.addEventListener('mouseover', function() {
-      hiddenSpan.innerText = '선택';
-    });
-    cellDiv.addEventListener('mouseout', function() {
-      hiddenSpan.innerText = '';
-    });
-    cellDiv.addEventListener('click', function() {
-      numSpan.classList.add('hidden');
-      hiddenSpan.classList.remove('hidden');
-    });
-    boardDiv.appendChild(cellDiv);
+const numArray = createArray(shuffleArray(arr));
+
+const numArrayCopyContainer = document.getElementById("numArrayCopy-container");
+numArrayCopyContainer.innerHTML = "";
+for (let i = 0; i < numArrayCopy.length; i++) {
+  for (let j = 0; j < numArrayCopy[i].length; j++) {
+    const numDiv = document.createElement("div");
+    numDiv.classList.add("num");
+    numDiv.innerText = numArrayCopy[i][j];
+    numArrayCopyContainer.appendChild(numDiv);
+  }
+}
+
+const numDivs = document.querySelectorAll(".num");
+for (let i = 0; i < numDivs.length; i++) {
+  numDivs[i].addEventListener("mouseenter", function() {
+    this.innerText = "선택";
+  });
+  numDivs[i].addEventListener("mouseleave", function() {
+    this.innerText = numArrayCopy[Math.floor(i / 7)][i % 7];
+  });
+}
+
+function handleClick(event) {
+  // 클릭한 숫자 판의 위치 구하기
+  const clickedRowIndex = parseInt(event.target.dataset.row);
+  const clickedColIndex = parseInt(event.target.dataset.col);
+  
+  // numArray와 numArrayCopy에서 해당 위치의 값을 서로 바꾸기
+  const temp = numArray[clickedRowIndex][clickedColIndex];
+  numArray[clickedRowIndex][clickedColIndex] = numArrayCopy[clickedRowIndex][clickedColIndex];
+  numArrayCopy[clickedRowIndex][clickedColIndex] = temp;
+  
+  // numArray 출력하기
+  displayArray(numArray, "numArray-container");
+  
+  // numArrayCopy 출력하기
+  displayArray(numArrayCopy, "numArrayCopy-container");
+}
+
+// numArrayCopy-container의 클릭 이벤트 핸들러
+function handleClick(e) {
+  // 클릭한 요소가 숫자판 내부의 숫자 요소인 경우
+  if (e.target.classList.contains('numArrayCopy-item')) {
+    // 클릭한 요소의 인덱스를 가져옴
+    const row = parseInt(e.target.getAttribute('data-row'));
+    const col = parseInt(e.target.getAttribute('data-col'));
+    // numArrayCopy의 해당 위치의 값을 numArray의 해당 위치로 복사
+    numArray[row][col] = numArrayCopy[row][col];
+    // numArray 출력
+    printArray(numArray, 'numArray-container');
   }
 }
