@@ -1,3 +1,4 @@
+
 a = ["sss", "ss", "s", "a", "b"]
 ac = [1, 2, 6, 10, 18]
 
@@ -90,32 +91,59 @@ for (let i = 0; i < row; i++) {
   boxContainer.appendChild(document.createElement("br"));
 }
 
-const resetBtn = document.getElementById("reset-btn");
-  resetBtn.addEventListener("click", function() {
-    xx = [];
-    x = 0;
-    while (x < 5) {
-      xx = [...xx, ...Array(ac[x]).fill(a[x])];
-      x = x + 1;
+
+const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener('click', function() {
+  xxx=[1,2,6,10,18,12];
+  resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
+  
+  xx = [];
+  let x = 0;
+  while (x < 5) {
+    xx = [...xx, ...Array(ac[x]).fill(a[x])];
+    x = x + 1;
+  }
+  shuffle(xx);
+  xx.unshift(0);
+  xx.push(0);
+
+  let i = 0;
+  while (i < 12) {
+    const randomIndex = Math.floor(Math.random() * (xx.length - 2)) + 1;
+    if (xx[randomIndex] !== "c" && xx[randomIndex - 1] !== "c" && xx[randomIndex + 1] !== "c") {
+      xx.splice(randomIndex, 0, "c");
+      i++;
     }
-    shuffle(xx);
-    xx.unshift(0);
-    xx.push(0);
-    i = 0;
-    while (i < 12) {
-      const randomIndex = Math.floor(Math.random() * (xx.length - 2)) + 1;
-      if (xx[randomIndex] !== "c" && xx[randomIndex - 1] !== "c" && xx[randomIndex + 1] !== "c") {
-        xx.splice(randomIndex, 0, "c");
-        i++;
-      }
-    }
-    xx.pop();
-    xx.shift();
-    const boxes = document.querySelectorAll(".box");
-    for (let i = 0; i < boxes.length; i++) {
-      boxes[i].innerHTML = numbers[Math.floor(i / col)][i % col];
-      boxes[i].addEventListener('click', clickHandler, { once: true });
-    }
-    xxx=[1,2,6,10,18,12];
-    resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
-  });
+  }
+  xx.pop();
+  xx.shift();
+
+  const boxes = document.querySelectorAll(".box");
+  for (let i = 0; i < boxes.length; i++) {
+    boxes[i].innerHTML = numbers[Math.floor(i / col)][i % col];
+    boxes[i].addEventListener('click', clickHandler, { once: true });
+  }
+});
+
+function clickHandler() {
+  const value = xx[this.dataset.row * col + parseInt(this.dataset.col)];
+  this.innerHTML = value;
+  if(value=="sss"){
+    xxx[0]--;
+  } else if (value=="ss"){
+    xxx[1]--;
+  } else if (value=="s"){
+    xxx[2]--;
+  } else if (value=="a"){
+    xxx[3]--;
+  } else if (value=="b"){
+    xxx[4]--;
+  } else if (value=="c"){
+    xxx[5]--;
+  }
+  resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
+}
+const boxes = document.querySelectorAll(".box");
+for (let i = 0; i < boxes.length; i++) {
+  boxes[i].addEventListener('click', clickHandler, { once: true });
+}
