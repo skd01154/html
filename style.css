@@ -1,5 +1,5 @@
 
-#boxContainer {
+#box-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -28,7 +28,7 @@
   background-color: #eee;
 }
 
-#resultContainer {
+#result-container {
   margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
