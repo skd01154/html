@@ -68,19 +68,19 @@ for (let i = 0; i < row; i++) {
       console.log(value);
       box.innerHTML = value;
       if(value=="sss"){
-        xxx[1]--;
+        if(xxx[1] > 0) xxx[1]--;
       } else if (value=="ss"){
-        xxx[1]--;
+        if(xxx[1] > 0) xxx[1]--;
       } else if (value=="s"){
-        xxx[2]--;
+        if(xxx[2] > 0) xxx[2]--;
       } else if (value=="a"){
-        xxx[3]--;
+        if(xxx[3] > 0) xxx[3]--;
       } else if (value=="b"){
-        xxx[4]--;
+        if(xxx[4] > 0) xxx[4]--;
       } else if (value=="c"){
-        xxx[5]--;
+        if(xxx[5] > 0) xxx[5]--;
       }
-      resultDiv.innerHTML = `sss=${xxx[0]}    ss=${xxx[1]}    s=${xxx[2]}    a=${xxx[3]}    b=${xxx[4]}    c=${xxx[5]}`;
+      resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
     });
     boxContainer.appendChild(box);
   }
