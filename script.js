@@ -40,7 +40,7 @@ const boxContainer = document.getElementById("box-container");
 const row = 7;
 const col = 7;
 
-let xxx=(1,2,6,10,18,12);
+let xxx=[1,2,6,10,18,12];
 const resultDiv = document.createElement("div");
 resultDiv.innerHTML = `sss=${xxx[0]} ss=${xxx[1]} s=${xxx[2]} a=${xxx[3]} b=${xxx[4]} c=${xxx[5]}`;
 resultContainer.appendChild(resultDiv);
