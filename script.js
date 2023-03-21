@@ -1,4 +1,4 @@
-
+function all(){
 a = ["sss", "ss", "s", "a", "b"]
 ac = [1, 2, 6, 10, 18]
 
@@ -57,6 +57,7 @@ for (let i = 0; i < 7; i++) {
   numbers.push(row);
 }
 
+
 for (let i = 0; i < row; i++) {
   for (let j = 0; j < col; j++) {
     const box = document.createElement("span");
@@ -90,4 +91,36 @@ for (let i = 0; i < row; i++) {
   }
   boxContainer.appendChild(document.createElement("br"));
 }
+}
 
+
+function exist(){
+delete a;
+delete ac;
+delete x;
+delete xx;
+delete shuffle;
+delete i;
+delete resultContainer;
+delete boxContainer;
+delete xxx;
+delete resultDiv;
+delete numbers;
+
+const box = document.querySelectorAll(".box");
+for (let i = 0; i < box.length; i++) {
+  delete box[i].dataset.row;
+  delete box[i].dataset.col;
+  box[i].removeEventListener('click', clickHandler, true);
+  box[i].remove();
+}
+
+delete box;
+}
+
+const resetButton = document.getElementById("reset-button");
+
+resetButton.addEventListener("click", function() {
+  exist();
+  all();
+});
