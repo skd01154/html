@@ -46,6 +46,7 @@ const resultDiv = document.createElement("div");
 resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
 resultContainer.appendChild(resultDiv);
 
+
 const numbers = [];
 let count = 1;
 
@@ -70,57 +71,38 @@ for (let i = 0; i < row; i++) {
     box.addEventListener('click', function() {
       const value = xx[i * col + j];
       console.log(value);
-      box.innerHTML = value;
-      if(value=="sss"){
-        xxx[0]--;
-      } else if (value=="ss"){
-        xxx[1]--;
-      } else if (value=="s"){
-        xxx[2]--;
-      } else if (value=="a"){
-        xxx[3]--;
-      } else if (value=="b"){
-        xxx[4]--;
-      } else if (value=="c"){
-        xxx[5]--;
+      if (box.innerHTML !== value) {
+        box.innerHTML = value;
+        switch(value) {
+          case 'sss':
+            xxx[0]--;
+            break;
+          case 'ss':
+            xxx[1]--;
+            break;
+          case 's':
+            xxx[2]--;
+            break;
+          case 'a':
+            xxx[3]--;
+            break;
+          case 'b':
+            xxx[4]--;
+            break;
+          case 'c':
+            xxx[5]--;
+            break;
+        }
       }
-      resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
-      box.removeEventListener('click', clickHandler, true);
-    }, );
+    });
     boxContainer.appendChild(box);
   }
   boxContainer.appendChild(document.createElement("br"));
 }
 }
 
-
-function exist(){
-delete a;
-delete ac;
-delete x;
-delete xx;
-delete shuffle;
-delete i;
-delete resultContainer;
-delete boxContainer;
-delete xxx;
-delete resultDiv;
-delete numbers;
-
-const box = document.querySelectorAll(".box");
-for (let i = 0; i < box.length; i++) {
-  delete box[i].dataset.row;
-  delete box[i].dataset.col;
-  box[i].removeEventListener('click', clickHandler, true);
-  box[i].remove();
-}
-
-delete box;
-}
-
 const resetButton = document.getElementById("reset-button");
 
 resetButton.addEventListener("click", function() {
-  exist();
   all();
 });
