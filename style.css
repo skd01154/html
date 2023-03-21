@@ -40,3 +40,10 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+#reset-button {
+  position: relative;
+  top: 0;
+  right: 0;
+  margin-left: 20px;
+}
