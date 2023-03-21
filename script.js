@@ -1,4 +1,4 @@
-function all(){
+
 a = ["sss", "ss", "s", "a", "b"]
 ac = [1, 2, 6, 10, 18]
 
@@ -105,6 +105,6 @@ for (let i = 0; i < row; i++) {
   }
   boxContainer.appendChild(document.createElement("br"));
 }
-}
+
 
 const resetButton = document.getElementById("reset-button");
