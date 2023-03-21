@@ -1,29 +1,20 @@
-#container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  margin: auto;
-  margin-top: 50px;
+.container {
+  display: inline-block;
+  width: 420px;
+  height: 420px;
+  margin: 10px;
 }
 
 .box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc((100% / 7) - 10px);
-  height: calc((100% / 7) - 10px);
+  display: inline-block;
+  width: 50px;
+  height: 50px;
   margin: 5px;
+  text-align: center;
   font-size: 24px;
   font-weight: bold;
-  background-color: lightgray;
-  border: 2px solid gray;
+  color: white;
+  background-color: black;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.box:hover {
-  background-color: gray;
-  color: white;
 }
