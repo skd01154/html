@@ -42,7 +42,7 @@ const col = 7;
 
 let xxx=[1,2,6,10,18,12];
 const resultDiv = document.createElement("div");
-resultDiv.innerHTML = `sss=${xxx[0]} ss=${xxx[1]} s=${xxx[2]} a=${xxx[3]} b=${xxx[4]} c=${xxx[5]}`;
+resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
 resultContainer.appendChild(resultDiv);
 
 const numbers = [];
@@ -56,6 +56,27 @@ for (let i = 0; i < 7; i++) {
   numbers.push(row);
 }
 
+function clickHandler() {
+  const value = xx[this.dataset.row * col + this.dataset.col];
+  console.log(value);
+  this.innerHTML = value;
+  if (value == "sss") {
+    xxx[0]--;
+  } else if (value == "ss") {
+    xxx[1]--;
+  } else if (value == "s") {
+    xxx[2]--;
+  } else if (value == "a") {
+    xxx[3]--;
+  } else if (value == "b") {
+    xxx[4]--;
+  } else if (value == "c") {
+    xxx[5]--;
+  }
+  resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
+  this.removeEventListener('click', clickHandler, true);
+}
+
 for (let i = 0; i < row; i++) {
   for (let j = 0; j < col; j++) {
     const box = document.createElement("span");
@@ -63,28 +84,7 @@ for (let i = 0; i < row; i++) {
     box.dataset.row = i;
     box.dataset.col = j;
     box.innerHTML = numbers[i][j];
-
-    
-    box.addEventListener('click', function() {
-      const value = xx[i * col + j];
-      console.log(value);
-      box.innerHTML = value;
-      if(value=="sss"){
-        xxx[0]--;
-      } else if (value=="ss"){
-        xxx[1]--;
-      } else if (value=="s"){
-        xxx[2]--;
-      } else if (value=="a"){
-        xxx[3]--;
-      } else if (value=="b"){
-        xxx[4]--;
-      } else if (value=="c"){
-        xxx[5]--;
-      }
-      resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
-      box.removeEventListener('click', clickHandler, true);
-    }, { once: true });
+    box.addEventListener('click', clickHandler, { once: true });
     boxContainer.appendChild(box);
   }
   boxContainer.appendChild(document.createElement("br"));
