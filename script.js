@@ -117,22 +117,24 @@ resetButton.addEventListener("click", function() {
     // 게임 보드 초기화
     const numbers = [];
     let count = 1;
+    
     for (let i = 0; i < 7; i++) {
       const row = [];
       for (let j = 0; j < 7; j++) {
         row.push(count++);
       }
       numbers.push(row);
-     }
-     for (let i = 0; i < row; i++) {
+    }
+    
+    for (let i = 0; i < row; i++) {
       for (let j = 0; j < col; j++) {
         const box = document.createElement("span");
         box.className = "box";
         box.dataset.row = i;
         box.dataset.col = j;
         box.innerHTML = numbers[i][j];
-  
-      
+    
+        
         box.addEventListener('click', function() {
           const value = xx[i * col + j];
           console.log(value);
