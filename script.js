@@ -92,6 +92,7 @@ for (let i = 0; i < row; i++) {
 
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", function() {
+  box.parentNode.removeChild(box)
   // xxx[0]이 0일 때 또는 다시하기 버튼을 눌렀을 때 초기화
   if ( this.id === "reset-button") {
     xx = [];
@@ -114,8 +115,6 @@ resetButton.addEventListener("click", function() {
     xx.pop();
     xx.shift();
     // 게임 보드 초기화
-    box.parentNode.removeChild(box)
-
     const numbers = [];
     let count = 1;
     for (let i = 0; i < 7; i++) {
