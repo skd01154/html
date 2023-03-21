@@ -1,5 +1,5 @@
 
-#container {
+#boxContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -26,4 +26,17 @@
 
 .box:hover {
   background-color: #eee;
+}
+
+#resultContainer {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }

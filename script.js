@@ -34,10 +34,16 @@ while (i < 12) {
 xx.pop();
 xx.shift();
 
-const container = document.getElementById("container");
+const resultContainer = document.getElementById("result-container");
+const boxContainer = document.getElementById("box-container");
 
 const row = 7;
 const col = 7;
+
+let xxx=(1,2,6,10,18,12);
+const resultDiv = document.createElement("div");
+resultDiv.innerHTML = `sss=${xxx[0]} ss=${xxx[1]} s=${xxx[2]} a=${xxx[3]} b=${xxx[4]} c=${xxx[5]}`;
+resultContainer.appendChild(resultDiv);
 
 for (let i = 0; i < row; i++) {
   for (let j = 0; j < col; j++) {
@@ -49,8 +55,22 @@ for (let i = 0; i < row; i++) {
       const value = xx[i * col + j];
       console.log(value);
       box.innerHTML = value;
+      if(value=="sss"){
+        console.log("축하합니다.");
+      } else if (value=="ss"){
+        xxx[1]--;
+      } else if (value=="s"){
+        xxx[2]--;
+      } else if (value=="a"){
+        xxx[3]--;
+      } else if (value=="b"){
+        xxx[4]--;
+      } else if (value=="c"){
+        xxx[5]--;
+      }
+      resultDiv.innerHTML = `sss=${xxx[0]} ss=${xxx[1]} s=${xxx[2]} a=${xxx[3]} b=${xxx[4]} c=${xxx[5]}`;
     });
-    container.appendChild(box);
+    boxContainer.appendChild(box);
   }
-  container.appendChild(document.createElement("br"));
+  boxContainer.appendChild(document.createElement("br"));
 }
