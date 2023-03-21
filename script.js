@@ -1,127 +1,80 @@
-const numArray = [];
-let count = 1;
 
-for (let i = 0; i < 7; i++) {
-  const row = [];
-
-  for (let j = 0; j < 7; j++) {
-    row.push(count);
-    count++;
-  }
-
-  numArray.push(row);
+function onMouseOver(elem) {
+  elem.innerHTML = "선택";
+  elem.classList.add("selected");
 }
 
-
-
-const sss = Array(1).fill('sss');
-const ss = Array(2).fill('ss');
-const s = Array(6).fill('s');
-const a = Array(10).fill('a');
-const b = Array(18).fill('b');
-const c = Array(12).fill('c');
-
-const arr = sss.concat(ss, s, a, b, c);
-
-function shuffleArray(arr) {
-  for (let i = arr.length - 1; i > 0; i--) {
-    if (arr[i] === 'c' && arr[i - 1] === 'c') {
-      let j = i - 1;
-      while (j > 0 && arr[j] === 'c') {
-        j--;
-      }
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    } else {
-      let j;
-      do {
-        j = Math.floor(Math.random() * (i + 1));
-      } while (j > 0 && j < i && arr[j] === 'c');
-      [arr[i], arr[j]] = [arr[j], arr[i]];
-    }
-  }
-  return arr;
+function onMouseOut(elem) {
+  elem.innerHTML = elem.dataset.value;
+  elem.classList.remove("selected");
 }
 
-shuffleArray(arr);
-
-const table = document.createElement('table');
-
-for (let i = 0; i < 7; i++) {
-  const row = document.createElement('tr');
-  for (let j = 0; j < 7; j++) {
-    const cell = document.createElement('td');
-    const number = document.createTextNode(numArray[i][j]);
-    const div = document.createElement('div');
-    div.appendChild(number);
-    div.classList.add('number-cell');
-    div.dataset.row = i;
-    div.dataset.col = j;
-    div.addEventListener('click', replaceCell);
-    div.addEventListener('mouseover', function() {
-      this.innerText = '선택';
-    });
-    div.addEventListener('mouseout', function() {
-      this.innerText = numArray[i][j];
-    });
-    cell.appendChild(div);
-    row.appendChild(cell);
+var container = document.getElementById("container");
+var i = 1;
+while (i < 50) {
+  var box = document.createElement("span");
+  box.className = "box";
+  box.dataset.value = i;
+  box.addEventListener("mouseover", function() { onMouseOver(this) });
+  box.addEventListener("mouseout", function() { onMouseOut(this) });
+  container.appendChild(box);
+  i++;
+  if (i % 7 === 0) {
+    container.appendChild(document.createElement("br"));
   }
-  table.appendChild(row);
 }
 
-document.body.appendChild(table);
+a=["sss", "ss", "s", "a", "b"]
+ac=[1, 2, 6, 10, 18]
 
-function replaceCell() {
-  const row = parseInt(this.dataset.row);
-  const col = parseInt(this.dataset.col);
-  const value = numArray[row][col];
-  const shuffledValue = shuffleArray(arr)[row * 7 + col];
-
-  if (value === shuffledValue) {
-    return;
-  }
-
-  numArray[row][col] = shuffledValue;
-  this.innerText = shuffledValue;
+let x = 0;
+let xx = [];
+while(x<5){
+  xx = [...xx, ...Array(ac[x]).fill(a[x])];
+  x=x+1;
 }
 
-let arr1 = ["sss", "ss", "ss", "s", "s", "s", "s", "s", "s", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "b", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c", "c"];
+function shuffle(xx) {
+  for (let index = xx.length - 1; index > 0; index--) {
+    // 무작위 index 값을 만든다. (0 이상의 배열 길이 값)
+    const randomPosition = Math.floor(Math.random() * (index + 1));
 
-let arr2 = [];
-
-for (let i = 0; i < arr.length; i++) {
-  let row = [];
-  let cCount = 0;
-  for (let j = 0; j < arr[i].length; j++) {
-    let value = "";
-    if (arr1[i * arr[i].length + j] === "c") {
-      cCount++;
-      if (j > 0 && arr2[i][j-1] === "c") {
-        continue;
-      } else {
-        switch(cCount) {
-          case 1:
-            value = "a";
-            break;
-          case 2:
-            value = "s";
-            break;
-          case 3:
-            value = "ss";
-            break;
-          case 4:
-            value = "sss";
-            break;
-          default:
-            value = "b";
-            break;
-        }
-      }
-    } else {
-      value = arr1[i * arr[i].length + j];
-      cCount = 0;
-    }
-    row.push(value);
+    // 임시로 원본 값을 저장하고, randomPosition을 사용해 배열 요소를 섞는다.
+    const temporary = xx[index];
+    xx[index] = xx[randomPosition];
+    xx[randomPosition] = temporary;
   }
-  arr2.push(row);
+}
+
+shuffle(xx);
+
+//shuffle(xx)에 원소 사이의 공간 12개를 랜덤 으로 선택하는 방법은? 
+xx.unshift(0);
+xx.push(0);
+
+// 'c'를 무작위로 삽입
+let i = 0;
+while (i < 12) {
+  const randomIndex = Math.floor(Math.random() * (xx.length - 2)) + 1;
+  if (xx[randomIndex] !== "c" && xx[randomIndex - 1] !== "c" && xx[randomIndex + 1] !== "c") {
+    xx.splice(randomIndex, 0, "c");
+    i++;
+  }
+}
+
+// 맨 앞, 맨 뒤의 0 제거
+xx.pop();
+xx.shift();
+
+// 클릭한 상자(span)의 인덱스를 저장하는 변수
+let selectedBoxIndex = -1;
+
+// 각 상자(span)에 클릭 이벤트 리스너 추가
+const boxes = document.querySelectorAll('.box');
+for (let i = 0; i < boxes.length; i++) {
+  boxes[i].addEventListener('click', function() {
+    selectedBoxIndex = i+1; // 선택된 상자(span)의 인덱스 저장
+    const value = xx[selectedBoxIndex]; // 해당 인덱스에 있는 값 가져오기
+    boxes[selectedBoxIndex].innerHTML = value; // innerHTML 변경
+  });
 }
