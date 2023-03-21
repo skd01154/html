@@ -1,9 +1,16 @@
-.box {
-  border: 1px solid black;
-  padding: 5px;
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.selected {
-  color: red;
-  font-weight: bold;
+.box {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  text-align: center;
+  line-height: 40px;
+  margin: 5px;
+  cursor: pointer;
 }
