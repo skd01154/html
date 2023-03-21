@@ -66,39 +66,36 @@ for (let i = 0; i < row; i++) {
     box.dataset.row = i;
     box.dataset.col = j;
     box.innerHTML = numbers[i][j];
+    function updateXXXArray(xxx, i, j, value) {
+      switch(value) {
+        case 'sss':
+          xxx[0]--;
+          break;
+        case 'ss':
+          xxx[1]--;
+          break;
+        case 's':
+          xxx[2]--;
+          break;
+        case 'a':
+          xxx[3]--;
+          break;
+        case 'b':
+          xxx[4]--;
+          break;
+        case 'c':
+          xxx[5]--;
+          break;
+      }
+    }
 
     
     box.addEventListener('click', function() {
       const value = xx[i * col + j];
       console.log(value);
       if (box.innerHTML !== value) {
+        updateXXXArray(xxx, i, j, value);
         box.innerHTML = value;
-        switch(value) {
-          case 'sss':
-            xxx[0]--;
-            console.log(xxx[0]);
-            break;
-          case 'ss':
-            xxx[1]--;
-            console.log(xxx[1]);
-            break;
-          case 's':
-            xxx[2]--;
-            console.log(xxx[2]);
-            break;
-          case 'a':
-            xxx[3]--;
-            console.log(xxx[3]);
-            break;
-          case 'b':
-            xxx[4]--;
-            console.log(xxx[4]);
-            break;
-          case 'c':
-            xxx[5]--;
-            console.log(xxx[5]);
-            break;
-        }
       }
     });
     boxContainer.appendChild(box);
