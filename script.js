@@ -23,13 +23,11 @@ function shuffle(xx) {
 
 shuffle(xx);
 
-//shuffle(xx)에 원소 사이의 공간 12개를 랜덤 으로 선택하는 방법은? 
 xx.unshift(0);
 xx.push(0);
 
 
 
-// 'c'를 무작위로 삽입
 let i = 0;
 while (i < 12) {
   const randomIndex = Math.floor(Math.random() * (xx.length - 2)) + 1;
@@ -44,15 +42,12 @@ xx.pop();
 xx.shift();
 
 
-// 클릭한 상자(span)의 인덱스를 저장하는 변수
 let selectedBoxIndex = -1;
 
-// 2차원 배열 생성
 const row = 7;
 const col = 7;
 const boxes = new Array(row).fill().map(() => new Array(col).fill());
 
-// 상자(span) 생성하고 2차원 배열에 추가
 for (let i = 0; i < row; i++) {
   for (let j = 0; j < col; j++) {
     const box = document.createElement("span");
@@ -60,15 +55,14 @@ for (let i = 0; i < row; i++) {
     box.dataset.row = i;
     box.dataset.col = j;
     box.addEventListener('click', function() {
-      selectedBoxIndex = [i, j]; // 선택된 상자(span)의 인덱스 저장
-      const value = xx[i*col+j]; // 해당 인덱스에 있는 값 가져오기
-      console.log(value); // 해당 인덱스에 대응되는 xx의 값 출력
-      box.innerHTML = value; // innerHTML 변경
-});
+      selectedBoxIndex = [i, j];
+      const value = xx[i*col+j];
+      console.log(value);
+      box.innerHTML = value;
+    });
     
-    boxes[i][j] = i * col + j + 1; // 숫자 할당
+    boxes[i][j] = i * col + j;
     container.appendChild(box);
   }
   container.appendChild(document.createElement("br"));
 }
-
