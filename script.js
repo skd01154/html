@@ -1,32 +1,4 @@
 
-// 클릭한 상자(span)의 인덱스를 저장하는 변수
-let selectedBoxIndex = -1;
-
-// 2차원 배열 생성
-const row = 7;
-const col = 7;
-const boxes = new Array(row).fill().map(() => new Array(col).fill());
-
-// 상자(span) 생성하고 2차원 배열에 추가
-for (let i = 0; i < row; i++) {
-  for (let j = 0; j < col; j++) {
-    const box = document.createElement("span");
-    box.className = "box";
-    box.dataset.row = i;
-    box.dataset.col = j;
-    box.addEventListener('click', function() {
-      selectedBoxIndex = [i, j]; // 선택된 상자(span)의 인덱스 저장
-      const value = boxes[i][j]; // 해당 인덱스에 있는 값 가져오기
-      console.log(xx[i*col+j]); // 해당 인덱스에 대응되는 xx의 값 출력
-      box.innerHTML = value; // innerHTML 변경
-    });
-    
-    boxes[i][j] = i * col + j + 1; // 숫자 할당
-    container.appendChild(box);
-  }
-  container.appendChild(document.createElement("br"));
-}
-
 a=["sss", "ss", "s", "a", "b"]
 ac=[1, 2, 6, 10, 18]
 
@@ -68,4 +40,33 @@ while (i < 12) {
 // 맨 앞, 맨 뒤의 0 제거
 xx.pop();
 xx.shift();
+
+
+// 클릭한 상자(span)의 인덱스를 저장하는 변수
+let selectedBoxIndex = -1;
+
+// 2차원 배열 생성
+const row = 7;
+const col = 7;
+const boxes = new Array(row).fill().map(() => new Array(col).fill());
+
+// 상자(span) 생성하고 2차원 배열에 추가
+for (let i = 0; i < row; i++) {
+  for (let j = 0; j < col; j++) {
+    const box = document.createElement("span");
+    box.className = "box";
+    box.dataset.row = i;
+    box.dataset.col = j;
+    box.addEventListener('click', function() {
+      selectedBoxIndex = [i, j]; // 선택된 상자(span)의 인덱스 저장
+      const value = xx[i*col+j]; // 해당 인덱스에 있는 값 가져오기
+      console.log(value); // 해당 인덱스에 대응되는 xx의 값 출력
+      box.innerHTML = value; // innerHTML 변경
+});
+    
+    boxes[i][j] = i * col + j + 1; // 숫자 할당
+    container.appendChild(box);
+  }
+  container.appendChild(document.createElement("br"));
+}
 
