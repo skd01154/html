@@ -1,3 +1,16 @@
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  width: 800px;
+  height: 800px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
 .box {
   width: 100px;
   height: 100px;
@@ -13,12 +26,4 @@
 
 .box:hover {
   background-color: #eee;
-}
-
-#container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
 }
