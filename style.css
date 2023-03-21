@@ -1,29 +1,91 @@
+/* Body */
+body {
+  background-color: #eee;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Game Board */
 #container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  margin: auto;
-  margin-top: 50px;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 450px;
 }
 
 .box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  margin: 5px;
+  display: inline-block;
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
   font-size: 24px;
   font-weight: bold;
-  background-color: lightgray;
-  border: 2px solid gray;
-  border-radius: 5px;
-  cursor: pointer;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+  margin-right: -5px;
+  margin-bottom: -5px;
+  width: 60px;
+  transition: background-color 0.3s ease;
 }
 
 .box:hover {
-  background-color: gray;
-  color: white;
+  background-color: #f7f7f7;
+}
+
+/* Selected Box */
+.box.selected {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+/* Matched Box */
+.box.matched {
+  background-color: #03A9F4;
+  color: #fff;
+}
+
+/* Unmatched Box */
+.box.unmatched {
+  background-color: #f44336;
+  color: #fff;
+}
+
+/* Win/Lose Message */
+#message {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 36px;
+  font-weight: bold;
+  height: 80px;
+  left: 50%;
+  line-height: 80px;
+  position: fixed;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  z-index: 999;
+  display: none;
+}
+
+#message.won {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+#message.lost {
+  background-color: #f44336;
+  color: #fff;
 }
