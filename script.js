@@ -114,6 +114,7 @@ resetButton.addEventListener("click", function() {
     xx.pop();
     xx.shift();
     // 게임 보드 초기화
+    box.parentNode.removeChild(box)
     const numbers = [];
     let count = 1;
     for (let i = 0; i < 7; i++) {
