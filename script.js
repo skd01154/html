@@ -86,7 +86,7 @@ for (let i = 0; i < row; i++) {
       }
       resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
       box.removeEventListener('click', clickHandler, true);
-    }, { once: true });
+    }, );
     boxContainer.appendChild(box);
   }
   boxContainer.appendChild(document.createElement("br"));
