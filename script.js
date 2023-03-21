@@ -70,17 +70,17 @@ for (let i = 0; i < row; i++) {
       console.log(value);
       box.innerHTML = value;
       if(value=="sss"){
-        if(xxx[1] > 0) xxx[0]--;
+        xxx[0]--;
       } else if (value=="ss"){
-        if(xxx[1] > 0) xxx[1]--;
+        xxx[1]--;
       } else if (value=="s"){
-        if(xxx[2] > 0) xxx[2]--;
+        xxx[2]--;
       } else if (value=="a"){
-        if(xxx[3] > 0) xxx[3]--;
+        xxx[3]--;
       } else if (value=="b"){
-        if(xxx[4] > 0) xxx[4]--;
+        xxx[4]--;
       } else if (value=="c"){
-        if(xxx[5] > 0) xxx[5]--;
+        xxx[5]--;
       }
       resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
       box.removeEventListener('click', clickHandler, true);
@@ -94,7 +94,7 @@ const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", function() {
   
   // xxx[0]이 0일 때 또는 다시하기 버튼을 눌렀을 때 초기화
-  if (xxx[0] === 0 || this.id === "reset-button") {
+  if ( this.id === "reset-button") {
     xx = [];
     let x = 0;
     while (x < 5) {
@@ -119,8 +119,9 @@ resetButton.addEventListener("click", function() {
   const boxes = document.querySelectorAll(".box");
   for (let i = 0; i < boxes.length; i++) {
     boxes[i].innerHTML = numbers[Math.floor(i / col)][i % col];
+    boxes[i].addEventListener('click', clickHandler, { once: true });
   }
   // 결과창 초기화
   xxx=[1,2,6,10,18,12];
-  resultDiv.innerHTML = `sss=${xxx[0]} ss=${xxx[1]} s=${xxx[2]} a=${xxx[3]} b=${xxx[4]} c=${xxx[5]}`;
+  resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}}`;
 });
