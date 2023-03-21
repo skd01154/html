@@ -28,6 +28,7 @@ xx.unshift(0);
 xx.push(0);
 
 
+
 // 'c'를 무작위로 삽입
 let i = 0;
 while (i < 12) {
@@ -42,12 +43,6 @@ while (i < 12) {
 xx.pop();
 xx.shift();
 
-const sliced = [];
-const sliceSize = 7;
-
-for (let i = 0; i < xx.length; i += sliceSize) {
-  sliced.push(xx.slice(i, i + sliceSize));
-}
 
 // 클릭한 상자(span)의 인덱스를 저장하는 변수
 let selectedBoxIndex = -1;
@@ -66,7 +61,7 @@ for (let i = 0; i < row; i++) {
     box.dataset.col = j;
     box.addEventListener('click', function() {
       selectedBoxIndex = [i, j]; // 선택된 상자(span)의 인덱스 저장
-      const value = sliced[i, j]; // 해당 인덱스에 있는 값 가져오기
+      const value = xx[i*col+j]; // 해당 인덱스에 있는 값 가져오기
       console.log(value); // 해당 인덱스에 대응되는 xx의 값 출력
       box.innerHTML = value; // innerHTML 변경
 });
