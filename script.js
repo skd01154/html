@@ -92,6 +92,8 @@ for (let i = 0; i < row; i++) {
 
 const resetButton = document.getElementById("reset-button");
 resetButton.addEventListener("click", function() {
+  boxContainer.remove();
+  const boxContainer = document.getElementById("box-container");
   // xxx[0]이 0일 때 또는 다시하기 버튼을 눌렀을 때 초기화
   if ( this.id === "reset-button") {
     xx = [];
