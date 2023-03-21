@@ -82,7 +82,7 @@ for (let i = 0; i < row; i++) {
       } else if (value=="c"){
         xxx[5]--;
       }
-      resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
+      resultDiv.innerHTML = `sss: ${xxx[0]}         ss: ${xxx[1]}         s: ${xxx[2]}         a: ${xxx[3]}         b: ${xxx[4]}         c: ${xxx[5]}`;
       box.removeEventListener('click', clickHandler, true);
     }, { once: true });
     boxContainer.appendChild(box);
@@ -113,42 +113,50 @@ resetButton.addEventListener("click", function() {
     }
     xx.pop();
     xx.shift();
-  }
-  // 게임 보드 초기화
-  for (let i = 0; i < row; i++) {
-    for (let j = 0; j < col; j++) {
-      const box = document.createElement("span");
-      box.className = "box";
-      box.dataset.row = i;
-      box.dataset.col = j;
-      box.innerHTML = numbers[i][j];
+    // 게임 보드 초기화
+    const numbers = [];
+    let count = 1;
+    for (let i = 0; i < 7; i++) {
+      const row = [];
+      for (let j = 0; j < 7; j++) {
+        row.push(count++);
+      }
+      numbers.push(row);
+     }
+     for (let i = 0; i < row; i++) {
+      for (let j = 0; j < col; j++) {
+        const box = document.createElement("span");
+        box.className = "box";
+        box.dataset.row = i;
+        box.dataset.col = j;
+        box.innerHTML = numbers[i][j];
   
       
-      box.addEventListener('click', function() {
-        const value = xx[i * col + j];
-        console.log(value);
-        box.innerHTML = value;
-        if(value=="sss"){
-          xxx[0]--;
-        } else if (value=="ss"){
-          xxx[1]--;
-        } else if (value=="s"){
-          xxx[2]--;
-        } else if (value=="a"){
-          xxx[3]--;
-        } else if (value=="b"){
-          xxx[4]--;
-        } else if (value=="c"){
-          xxx[5]--;
-        }
-        resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}`;
-        box.removeEventListener('click', clickHandler, true);
-      }, { once: true });
-      boxContainer.appendChild(box);
+        box.addEventListener('click', function() {
+          const value = xx[i * col + j];
+          console.log(value);
+          box.innerHTML = value;
+          if(value=="sss"){
+            xxx[0]--;
+          } else if (value=="ss"){
+            xxx[1]--;
+          } else if (value=="s"){
+            xxx[2]--;
+          } else if (value=="a"){
+            xxx[3]--;
+          } else if (value=="b"){
+            xxx[4]--;
+          } else if (value=="c"){
+            xxx[5]--;
+          }
+          resultDiv.innerHTML = `sss: ${xxx[0]}         ss: ${xxx[1]}         s: ${xxx[2]}         a: ${xxx[3]}         b: ${xxx[4]}         c: ${xxx[5]}`;
+          box.removeEventListener('click', clickHandler, true);
+        }, { once: true });
+        boxContainer.appendChild(box);
+      }
+      boxContainer.appendChild(document.createElement("br"));
     }
-    boxContainer.appendChild(document.createElement("br"));
-  }
-  // 결과창 초기화
-  xxx=[1,2,6,10,18,12];
-  resultDiv.innerHTML = `sss: ${xxx[0]}    ss: ${xxx[1]}    s: ${xxx[2]}    a: ${xxx[3]}    b: ${xxx[4]}    c: ${xxx[5]}}`;
-});
+   // 결과창 초기화
+   xxx=[1,2,6,10,18,12];
+   resultDiv.innerHTML = `sss: ${xxx[0]}         ss: ${xxx[1]}         s: ${xxx[2]}         a: ${xxx[3]}         b: ${xxx[4]}         c: ${xxx[5]}`;
+}});
