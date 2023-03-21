@@ -119,7 +119,6 @@ resetButton.addEventListener("click", function() {
   const boxes = document.querySelectorAll(".box");
   for (let i = 0; i < boxes.length; i++) {
     boxes[i].innerHTML = numbers[Math.floor(i / col)][i % col];
-    boxes[i].addEventListener('click', clickHandler, { once: true });
   }
   // 결과창 초기화
   xxx=[1,2,6,10,18,12];
