@@ -48,8 +48,8 @@ xx.shift();
 let selectedBoxIndex = -1;
 
 // 2차원 배열 생성
-const row = 6;
-const col = 6;
+const row = 7;
+const col = 7;
 const boxes = new Array(row).fill().map(() => new Array(col).fill());
 
 // 상자(span) 생성하고 2차원 배열에 추가
