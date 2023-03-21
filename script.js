@@ -17,8 +17,10 @@ for (let i = 0; i < row; i++) {
     box.addEventListener('click', function() {
       selectedBoxIndex = [i, j]; // 선택된 상자(span)의 인덱스 저장
       const value = boxes[i][j]; // 해당 인덱스에 있는 값 가져오기
+      console.log(xx[i*col+j]); // 해당 인덱스에 대응되는 xx의 값 출력
       box.innerHTML = value; // innerHTML 변경
     });
+    
     boxes[i][j] = i * col + j + 1; // 숫자 할당
     container.appendChild(box);
   }
