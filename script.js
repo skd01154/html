@@ -40,10 +40,6 @@ const boxContainer = document.getElementById("box-container");
 
 
 var xxx=[1,2,6,10,18,12];
-const resultDiv = document.createElement("div");
-resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
-resultContainer.appendChild(resultDiv);
-
 
 const numbers = [];
 let count = 1;
@@ -99,5 +95,8 @@ for (let i = 0; i < row; i++) {
   boxContainer.appendChild(document.createElement("br"));
 
 }
+const resultDiv = document.createElement("div");
+resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
+resultContainer.appendChild(resultDiv);
 
 const resetButton = document.getElementById("reset-button");
