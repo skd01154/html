@@ -84,7 +84,7 @@ for (let i = 0; i < row; i++) {
             xxx[2]--;
             break;
           case "a":
-            box.style.backgroundColor = "blue";
+            box.style.backgroundColor = "skyblue";
             xxx[3]--;
             break;
           case "b":
