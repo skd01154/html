@@ -42,7 +42,7 @@ const boxContainer = document.getElementById("box-container");
 var xxx=[1,2,6,10,18,12];
 const resultDiv = document.createElement("div");
           resultDiv.className = "resultDiv";
-          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(12)}ss: ${xxx[1]}${" ".repeat(12)}s: ${xxx[2]}${" ".repeat(12)}a: ${xxx[3]}${" ".repeat(12)}b: ${xxx[4]}${" ".repeat(12)}c: ${xxx[5]}`;
+          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(6)}ss: ${xxx[1]}${" ".repeat(6)}s: ${xxx[2]}${" ".repeat(6)}a: ${xxx[3]}${" ".repeat(6)}b: ${xxx[4]}${" ".repeat(6)}c: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
 
@@ -100,7 +100,7 @@ for (let i = 0; i < row; i++) {
           }
           const resultDiv = document.createElement("div");
           resultDiv.className = "resultDiv";
-          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(12)}ss: ${xxx[1]}${" ".repeat(12)}s: ${xxx[2]}${" ".repeat(12)}a: ${xxx[3]}${" ".repeat(12)}b: ${xxx[4]}${" ".repeat(12)}c: ${xxx[5]}`;
+          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(6)}ss: ${xxx[1]}${" ".repeat(6)}s: ${xxx[2]}${" ".repeat(6)}a: ${xxx[3]}${" ".repeat(6)}b: ${xxx[4]}${" ".repeat(6)}c: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
           
