@@ -1,5 +1,5 @@
 
-a = ["sss", "ss", "s", "a", "b"]
+a = ["SS", "SS", "S", "A", "B"]
 ac = [1, 2, 6, 10, 18]
 
 let x = 0;
@@ -26,8 +26,8 @@ xx.push(0);
 let i = 0;
 while (i < 12) {
   const randomIndex = Math.floor(Math.random() * (xx.length - 2)) + 1;
-  if (xx[randomIndex] !== "c" && xx[randomIndex - 1] !== "c" && xx[randomIndex + 1] !== "c") {
-    xx.splice(randomIndex, 0, "c");
+  if (xx[randomIndex] !== "C" && xx[randomIndex - 1] !== "C" && xx[randomIndex + 1] !== "C") {
+    xx.splice(randomIndex, 0, "C");
     i++;
   }
 }
@@ -42,7 +42,7 @@ const boxContainer = document.getElementById("box-container");
 var xxx=[1,2,6,10,18,12];
 const resultDiv = document.createElement("div");
           resultDiv.className = "resultDiv";
-          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(6)}ss: ${xxx[1]}${" ".repeat(6)}s: ${xxx[2]}${" ".repeat(6)}a: ${xxx[3]}${" ".repeat(6)}b: ${xxx[4]}${" ".repeat(6)}c: ${xxx[5]}`;
+          resultDiv.innerHTML = `SSS: ${xxx[0]}${" ".repeat(6)}SS: ${xxx[1]}${" ".repeat(6)}S: ${xxx[2]}${" ".repeat(6)}A: ${xxx[3]}${" ".repeat(6)}B: ${xxx[4]}${" ".repeat(6)}C: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
 
@@ -73,34 +73,34 @@ for (let i = 0; i < row; i++) {
         const value = xx[i * col + j];
         box.innerHTML = value;
         switch(value) {
-          case "sss":
+          case "SSS":
             box.style.backgroundColor = "red";
             xxx[0]--;
             break;
-          case "ss":
+          case "SS":
             box.style.backgroundColor = "pink";
             xxx[1]--;
             break;
-          case "s":
+          case "S":
             box.style.backgroundColor = "yellow";
             xxx[2]--;
             break;
-          case "a":
+          case "A":
             box.style.backgroundColor = "skyblue";
             xxx[3]--;
             break;
-          case "b":
+          case "B":
             box.style.backgroundColor = "orange";
             xxx[4]--;
             break;
-          case "c":
+          case "C":
             box.style.backgroundColor = "gray";
             xxx[5]--;
             break;
           }
           const resultDiv = document.createElement("div");
           resultDiv.className = "resultDiv";
-          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(6)}ss: ${xxx[1]}${" ".repeat(6)}s: ${xxx[2]}${" ".repeat(6)}a: ${xxx[3]}${" ".repeat(6)}b: ${xxx[4]}${" ".repeat(6)}c: ${xxx[5]}`;
+          resultDiv.innerHTML = `SSS: ${xxx[0]}${" ".repeat(6)}SS: ${xxx[1]}${" ".repeat(6)}S: ${xxx[2]}${" ".repeat(6)}A: ${xxx[3]}${" ".repeat(6)}B: ${xxx[4]}${" ".repeat(6)}C: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
           
