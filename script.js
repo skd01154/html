@@ -97,6 +97,7 @@ for (let i = 0; i < row; i++) {
             break;
           }
           const resultDiv = document.createElement("div");
+          resultDiv.className = "resultDiv";
           resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(100)}ss: ${xxx[1]}${" ".repeat(100)}s: ${xxx[2]}${" ".repeat(100)}a: ${xxx[3]}${" ".repeat(100)}b: ${xxx[4]}${" ".repeat(100)}c: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);

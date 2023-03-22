@@ -14,7 +14,7 @@
 .box {
   width: 100px;
   height: 100px;
-  background-color: #87CEEB;
+  background-color: #00FF00;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,10 +35,11 @@
   color: black;
 }
 
-.result {
+.resultDiv {
   margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
+  white-space: pre-wrap;
 }
 
 #reset-button {
