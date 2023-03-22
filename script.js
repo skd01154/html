@@ -38,8 +38,6 @@ xx.shift();
 const resultContainer = document.getElementById("result-container");
 const boxContainer = document.getElementById("box-container");
 
-const row = 7;
-const col = 7;
 
 var xxx=[1,2,6,10,18,12];
 const resultDiv = document.createElement("div");
@@ -49,6 +47,9 @@ resultContainer.appendChild(resultDiv);
 
 const numbers = [];
 let count = 1;
+const row = 7;
+const col = 7;
+
 
 for (let i = 0; i < 7; i++) {
   const row = [];
@@ -67,7 +68,7 @@ for (let i = 0; i < row; i++) {
     box.dataset.col = j;
     box.innerHTML = numbers[i][j];
     box.addEventListener('click', function() {
-      if (box.innerHTML == numbers[i][j]) {
+      if (box.dataset.row == i && box.dataset.col == j && box.innerHTML == numbers[i][j]) {
         const value = xx[i * col + j];
         console.log(value);
         box.innerHTML = value;
