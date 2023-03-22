@@ -55,6 +55,15 @@ for (let i = 0; i < 7; i++) {
   numbers.push(row);
 }
 
+const colors = {
+  'sss': 'red',
+  'ss': 'pink',
+  's': 'yellow',
+  'a': 'blue',
+  'b': 'orange',
+  'c': 'gray'
+};
+
 
 for (let i = 0; i < row; i++) {
   for (let j = 0; j < col; j++) {
@@ -63,11 +72,16 @@ for (let i = 0; i < row; i++) {
     box.dataset.row = i;
     box.dataset.col = j;
     box.innerHTML = numbers[i][j];
+    const color = colors[value];
+    if (color) {
+      box.classList.add(color);
+    }
     box.addEventListener('click', function() {
       if (box.dataset.row == i && box.dataset.col == j && box.innerHTML == numbers[i][j]) {
         const value = xx[i * col + j];
         console.log(value);
         box.innerHTML = value;
+        box.classList.remove(color);
         switch(value) {
           case "sss":
             xxx[0]--;
@@ -88,6 +102,10 @@ for (let i = 0; i < row; i++) {
             xxx[5]--;
             break;
           }
+          color = colors[value];
+          if (color) {
+            box.classList.add(color);
+          }
           const resultDiv = document.createElement("div");
           resultDiv.innerHTML = 
           `<span class="result-item">sss: ${xxx[0]}</span>
@@ -97,10 +115,10 @@ for (let i = 0; i < row; i++) {
           <span class="result-item">b: ${xxx[4]}</span>
           <span class="result-item">c: ${xxx[5]}</span>`;
           resultDiv.style.display = "flex";
-          resultDiv.style.gap = "30px"; // 스페이스를 10px로 설정
+          resultDiv.style.gap = "100px"; // 스페이스를 10px로 설정
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
-
+          
       }
     });
     boxContainer.appendChild(box);
