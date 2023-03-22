@@ -69,27 +69,35 @@ for (let i = 0; i < row; i++) {
         console.log(value);
         box.innerHTML = value;
         switch(value) {
-          case 'sss':
+          case "sss":
             xxx[0]--;
             break;
-          case 'ss':
+          case "ss":
             xxx[1]--;
             break;
-          case 's':
+          case "s":
             xxx[2]--;
             break;
-          case 'a':
+          case "a":
             xxx[3]--;
             break;
-          case 'b':
+          case "b":
             xxx[4]--;
             break;
-          case 'c':
+          case "c":
             xxx[5]--;
             break;
           }
           const resultDiv = document.createElement("div");
-          resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
+          resultDiv.innerHTML = 
+          `<span class="result-item">sss: ${xxx[0]}</span>
+          <span class="result-item">ss: ${xxx[1]}</span>
+          <span class="result-item">s: ${xxx[2]}</span>
+          <span class="result-item">a: ${xxx[3]}</span>
+          <span class="result-item">b: ${xxx[4]}</span>
+          <span class="result-item">c: ${xxx[5]}</span>`;
+          resultDiv.style.display = "flex";
+          resultDiv.style.gap = "30px"; // 스페이스를 10px로 설정
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
 
