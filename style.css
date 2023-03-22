@@ -14,7 +14,7 @@
 .box {
   width: 100px;
   height: 100px;
-  background-color: #00FF00;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +37,7 @@
 
 .resultDiv {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 32px;
   font-weight: bold;
   white-space: pre-wrap;
 }
