@@ -112,4 +112,45 @@ for (let i = 0; i < row; i++) {
 
 }
 
-const resetButton = document.getElementById("reset-button");
+const restartButton = document.getElementById("restart-button");
+restartButton.addEventListener("click", function() {
+  // 현재 게임 보드 삭제
+  boxContainer.innerHTML = "";
+
+  // 새 게임 보드 생성
+  const numbers = [];
+  let count = 1;
+  const row = 7;
+  const col = 7;
+
+  for (let i = 0; i < 7; i++) {
+    const row = [];
+    for (let j = 0; j < 7; j++) {
+      row.push(count++);
+    }
+    numbers.push(row);
+  }
+
+  for (let i = 0; i < row; i++) {
+    for (let j = 0; j < col; j++) {
+      const box = document.createElement("span");
+      box.className = "box";
+      box.dataset.row = i;
+      box.dataset.col = j;
+      box.innerHTML = numbers[i][j];
+      box.addEventListener('click', function() {
+        // 클릭 이벤트 코드
+      });
+      boxContainer.appendChild(box);
+    }
+    boxContainer.appendChild(document.createElement("br"));
+  }
+
+  // 결과 업데이트
+  xxx=[1,2,6,10,18,12];
+  const resultDiv = document.createElement("div");
+  resultDiv.className = "resultDiv";
+  resultDiv.innerHTML = `SSS: ${xxx[0]}${" ".repeat(6)}SS: ${xxx[1]}${" ".repeat(6)}S: ${xxx[2]}${" ".repeat(6)}A: ${xxx[3]}${" ".repeat(6)}B: ${xxx[4]}${" ".repeat(6)}C: ${xxx[5]}`;
+  resultContainer.innerHTML = "";
+  resultContainer.appendChild(resultDiv);
+});
