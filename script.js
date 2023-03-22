@@ -40,6 +40,9 @@ const boxContainer = document.getElementById("box-container");
 
 
 var xxx=[1,2,6,10,18,12];
+const resultDiv = document.createElement("div");
+resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
+resultContainer.appendChild(resultDiv);
 
 const numbers = [];
 let count = 1;
@@ -55,15 +58,6 @@ for (let i = 0; i < 7; i++) {
   numbers.push(row);
 }
 
-const colors = {
-  'sss': 'red',
-  'ss': 'pink',
-  's': 'yellow',
-  'a': 'blue',
-  'b': 'orange',
-  'c': 'gray'
-};
-
 
 for (let i = 0; i < row; i++) {
   for (let j = 0; j < col; j++) {
@@ -72,53 +66,41 @@ for (let i = 0; i < row; i++) {
     box.dataset.row = i;
     box.dataset.col = j;
     box.innerHTML = numbers[i][j];
-    const color = colors[value];
-    if (color) {
-      box.classList.add(color);
-    }
     box.addEventListener('click', function() {
       if (box.dataset.row == i && box.dataset.col == j && box.innerHTML == numbers[i][j]) {
         const value = xx[i * col + j];
-        console.log(value);
         box.innerHTML = value;
-        box.classList.remove(color);
         switch(value) {
           case "sss":
+            box.style.backgroundColor = "red";
             xxx[0]--;
             break;
           case "ss":
+            box.style.backgroundColor = "pink";
             xxx[1]--;
             break;
           case "s":
+            box.style.backgroundColor = "yellow";
             xxx[2]--;
             break;
           case "a":
+            box.style.backgroundColor = "blue";
             xxx[3]--;
             break;
           case "b":
+            box.style.backgroundColor = "orange";
             xxx[4]--;
             break;
           case "c":
+            box.style.backgroundColor = "gray";
             xxx[5]--;
             break;
           }
-          color = colors[value];
-          if (color) {
-            box.classList.add(color);
-          }
           const resultDiv = document.createElement("div");
-          resultDiv.innerHTML = 
-          `<span class="result-item">sss: ${xxx[0]}</span>
-          <span class="result-item">ss: ${xxx[1]}</span>
-          <span class="result-item">s: ${xxx[2]}</span>
-          <span class="result-item">a: ${xxx[3]}</span>
-          <span class="result-item">b: ${xxx[4]}</span>
-          <span class="result-item">c: ${xxx[5]}</span>`;
-          resultDiv.style.display = "flex";
-          resultDiv.style.gap = "100px"; // 스페이스를 10px로 설정
+          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(100)}ss: ${xxx[1]}${" ".repeat(100)}s: ${xxx[2]}${" ".repeat(100)}a: ${xxx[3]}${" ".repeat(100)}b: ${xxx[4]}${" ".repeat(100)}c: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
-          
+          boxContainer.appendChild(box);
       }
     });
     boxContainer.appendChild(box);
@@ -128,28 +110,3 @@ for (let i = 0; i < row; i++) {
 }
 
 const resetButton = document.getElementById("reset-button");
-resetButton.addEventListener('click', function() {
-  reset();
-});
-
-function createBox(num) {
-  const box = document.createElement("div");
-  const number = document.createElement("span"); // 숫자를 보여주는 새로운 요소
-  number.innerText = num;
-  box.appendChild(number);
-  box.classList.add("box");
-  box.addEventListener("click", () => handleBoxClick(box));
-  return box;
-}
-
-function reset() {
-  boxes = getRandomBoxes();
-  const boxContainer = document.querySelector("#box-container");
-  boxContainer.innerHTML = ""; // 기존 box 요소들 삭제
-  boxes.forEach((box) => {
-    const newBox = createBox(box);
-    boxContainer.appendChild(newBox);
-  });
-  const resultContainer = document.querySelector("#result-container");
-  resultContainer.innerHTML = "";
-}
