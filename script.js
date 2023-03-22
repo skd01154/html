@@ -88,6 +88,11 @@ for (let i = 0; i < row; i++) {
             xxx[5]--;
             break;
           }
+          const resultDiv = document.createElement("div");
+          resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
+          resultContainer.innerHTML = "";
+          resultContainer.appendChild(resultDiv);
+
       }
     });
     boxContainer.appendChild(box);
@@ -95,9 +100,5 @@ for (let i = 0; i < row; i++) {
   boxContainer.appendChild(document.createElement("br"));
 
 }
-const resultDiv = document.createElement("div");
-resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
-resultContainer.innerHTML = "";
-resultContainer.appendChild(resultDiv);
 
 const resetButton = document.getElementById("reset-button");
