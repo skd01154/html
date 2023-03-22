@@ -139,7 +139,44 @@ restartButton.addEventListener("click", function() {
       box.dataset.col = j;
       box.innerHTML = numbers[i][j];
       box.addEventListener('click', function() {
+        if (box.dataset.row == i && box.dataset.col == j && box.innerHTML == numbers[i][j]) {
+          const value = xx[i * col + j];
+          box.innerHTML = value;
+          switch(value) {
+            case "SSS":
+              box.style.backgroundColor = "red";
+              xxx[0]--;
+              break;
+            case "SS":
+              box.style.backgroundColor = "pink";
+              xxx[1]--;
+              break;
+            case "S":
+              box.style.backgroundColor = "yellow";
+              xxx[2]--;
+              break;
+            case "A":
+              box.style.backgroundColor = "skyblue";
+              xxx[3]--;
+              break;
+            case "B":
+              box.style.backgroundColor = "orange";
+              xxx[4]--;
+              break;
+            case "C":
+              box.style.backgroundColor = "gray";
+              xxx[5]--;
+              break;
+            }
+            const resultDiv = document.createElement("div");
+            resultDiv.className = "resultDiv";
+            resultDiv.innerHTML = `SSS: ${xxx[0]}${" ".repeat(6)}SS: ${xxx[1]}${" ".repeat(6)}S: ${xxx[2]}${" ".repeat(6)}A: ${xxx[3]}${" ".repeat(6)}B: ${xxx[4]}${" ".repeat(6)}C: ${xxx[5]}`;
+            resultContainer.innerHTML = "";
+            resultContainer.appendChild(resultDiv);
+            
+        }
         // 클릭 이벤트 코드
+        
       });
       boxContainer.appendChild(box);
     }
