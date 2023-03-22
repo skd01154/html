@@ -41,8 +41,10 @@ const boxContainer = document.getElementById("box-container");
 
 var xxx=[1,2,6,10,18,12];
 const resultDiv = document.createElement("div");
-resultDiv.innerHTML = `sss: ${xxx[0]}`+`     `+`ss: ${xxx[1]}`+`     `+`s: ${xxx[2]}`+`     `+`a: ${xxx[3]}`+`     `+`b: ${xxx[4]}`+`     `+`c: ${xxx[5]}`;
-resultContainer.appendChild(resultDiv);
+          resultDiv.className = "resultDiv";
+          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(25)}ss: ${xxx[1]}${" ".repeat(25)}s: ${xxx[2]}${" ".repeat(25)}a: ${xxx[3]}${" ".repeat(25)}b: ${xxx[4]}${" ".repeat(25)}c: ${xxx[5]}`;
+          resultContainer.innerHTML = "";
+          resultContainer.appendChild(resultDiv);
 
 const numbers = [];
 let count = 1;
@@ -98,7 +100,7 @@ for (let i = 0; i < row; i++) {
           }
           const resultDiv = document.createElement("div");
           resultDiv.className = "resultDiv";
-          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(50)}ss: ${xxx[1]}${" ".repeat(50)}s: ${xxx[2]}${" ".repeat(50)}a: ${xxx[3]}${" ".repeat(50)}b: ${xxx[4]}${" ".repeat(50)}c: ${xxx[5]}`;
+          resultDiv.innerHTML = `sss: ${xxx[0]}${" ".repeat(25)}ss: ${xxx[1]}${" ".repeat(25)}s: ${xxx[2]}${" ".repeat(25)}a: ${xxx[3]}${" ".repeat(25)}b: ${xxx[4]}${" ".repeat(25)}c: ${xxx[5]}`;
           resultContainer.innerHTML = "";
           resultContainer.appendChild(resultDiv);
           
