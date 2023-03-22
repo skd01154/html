@@ -128,3 +128,28 @@ for (let i = 0; i < row; i++) {
 }
 
 const resetButton = document.getElementById("reset-button");
+resetButton.addEventListener('click', function() {
+  reset();
+});
+
+function createBox(num) {
+  const box = document.createElement("div");
+  const number = document.createElement("span"); // 숫자를 보여주는 새로운 요소
+  number.innerText = num;
+  box.appendChild(number);
+  box.classList.add("box");
+  box.addEventListener("click", () => handleBoxClick(box));
+  return box;
+}
+
+function reset() {
+  boxes = getRandomBoxes();
+  const boxContainer = document.querySelector("#box-container");
+  boxContainer.innerHTML = ""; // 기존 box 요소들 삭제
+  boxes.forEach((box) => {
+    const newBox = createBox(box);
+    boxContainer.appendChild(newBox);
+  });
+  const resultContainer = document.querySelector("#result-container");
+  resultContainer.innerHTML = "";
+}
